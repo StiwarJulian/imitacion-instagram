@@ -20,7 +20,6 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
 	return [
 
-		'role' => "administrador",
 		'name' => $faker->name,
 		'surname' => $faker->name,
 		'nick' => $faker->name,

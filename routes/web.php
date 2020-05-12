@@ -16,3 +16,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'user'], function () {
+	Route::get('/configuracion', 'UserController@config')->name('user.config')->middleware('auth');
+	Route::put('/configuracion/update/{id}', 'UserController@updateConfig')->name('user.updateConfig')->middleware('auth');
+	Route::get('/image/{filename}','UserController@getImage')->name('user.avatar');
+});

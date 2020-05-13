@@ -3,12 +3,10 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-md-8">
+		<div class="col-md-10">
 			@if(session('message'))
 			<div class="alert alert-success"> {{ session('message') ?? 'is invalid'}} </div>
 			@endif
-
-			@foreach($images as $image)
 
 			<div class="card pub_image">
 				<div class="card-header">
@@ -19,12 +17,11 @@
 					@endif
 
 					<div class="data-user">
-						<a href="{{ route('image.detail', ['id'=> $image->id]) }}">
-							{{ $image->user->name.' '.$image->user->surname	}}
-							<span class="nickname">
-								{{' | @'.$image->user->nick }}
-							</span>
-						</a>
+						{{ $image->user->name.' '.$image->user->surname	}}
+						<span class="nickname">
+							{{' | @'.$image->user->nick }}
+						</span>
+
 					</div>
 				</div>
 
@@ -34,7 +31,6 @@
 					</div>
 
 					<div class="description">
-
 						<span class="nickname">{{ '@'.$image->user->nick }}</span>
 						<span class="nickname date">{{ ' | '.\Carbon\Carbon::now()->diffForHumans($image->created_at)	}}</span>
 						<p> {{$image->description}}</p>
@@ -47,10 +43,7 @@
 					</div>
 				</div>
 			</div>
-			@endforeach
-			<!-- PAGINACION -->
-			<div class="clearfix"></div>
-			{{$images->links()}}
+
 		</div>
 
 	</div>

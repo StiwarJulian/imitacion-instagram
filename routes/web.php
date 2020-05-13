@@ -26,6 +26,8 @@ Route::group(['prefix' => 'user'], function () {
 
 
 Route::group(['prefix' => 'image'], function () {
-	Route::get('/subir-imagen', 'ImageController@create')->name('image.create')->middleware('auth');
+	Route::get('/subir-imagen', 'ImageController@create')->name('image.create');
 	Route::post('/subir-imagen/save', 'ImageController@save')->name('image.save');
+	Route::get('/image/{filename}', 'ImageController@getImage')->name('image.file');
+	Route::get('/detail/{id}', 'ImageController@details')->name('image.detail');
 });

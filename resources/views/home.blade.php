@@ -39,11 +39,28 @@
 						<span class="nickname date">{{ ' | '.\Carbon\Carbon::now()->diffForHumans($image->created_at)	}}</span>
 						<p> {{$image->description}}</p>
 					</div>
-					<div class="likes">
-						<img src="{{asset('img/heart-black.png')}}" alt="">
+					<div class="likes" id="likes">
+
+						<?php $user_like = false;?>
+						@foreach($image->like as $likes)
+
+							@if($likes->user->id == Auth::user()->id)
+								<?php $user_like = true;?>
+							@endif
+
+						@endforeach
+
+						@if($user_like)
+							<img src="{{asset('img/heart-red.png')}}" data-id="{{ $image->id }}" id="btn-dislike" class="btn-dislike">
+						@else
+							<img src="{{asset('img/heart-black.png')}}"  data-id="{{ $image->id }}" id="btn-like" class="btn-like">
+						@endif
+						<span class="number-likes">
+							{{ count($image->like) }}
+						</span>
 					</div>
 					<div class="comments">
-						<a href="" class="btn btn-warning btn-sm btn-comments">Comentarios( {{count($image->comment)}} )</a>
+						<a href="{{ route('image.detail', ['id'=> $image->id]) }}" class="btn btn-warning btn-sm btn-comments">Comentarios( {{count($image->comment)}} )</a>
 					</div>
 				</div>
 			</div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
@@ -62,7 +63,6 @@ class ImageController extends Controller
 	public function details($id)
 	{
 		$image = Image::find($id);
-
 		return view('image.detail', [
 			'image' => $image
 		]);

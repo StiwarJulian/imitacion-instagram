@@ -30,4 +30,8 @@ Route::group(['prefix' => 'image'], function () {
 	Route::post('/subir-imagen/save', 'ImageController@save')->name('image.save');
 	Route::get('/image/{filename}', 'ImageController@getImage')->name('image.file');
 	Route::get('/detail/{id}', 'ImageController@details')->name('image.detail');
+	Route::post('/detail/comment', 'CommentController@save')->name('comment.save');
+	Route::get('/detail/comment/{id}', 'CommentController@delete')->name('comment.delete');
+	Route::get('/detail/like/{id}', 'LikeController@like')->name('like.save');
+	Route::get('/detail/dislike/{id}', 'LikeController@dislike')->name('like.delete');
 });

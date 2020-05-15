@@ -4,18 +4,15 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-8">
-			@if(session('message'))
-			<div class="alert alert-success"> {{ session('message') ?? 'is invalid'}} </div>
-			@endif
-
-			@foreach($images as $image)
-				@include('includes.image',['image'=>$image])
+			<h1> Mis imagenes favoritas </h1>
+			<hr>
+			@foreach($likes as $like)
+				@include('includes.image',['image'=>$like->image])
 			@endforeach
 			<!-- PAGINACION -->
 			<div class="clearfix"></div>
-			{{$images->links()}}
+			{{$likes->links()}}
 		</div>
-
 	</div>
 </div>
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-md-10">
+		<div class="col-md-7">
 			@if(session('message') )
 			<div class="alert alert-danger"> {{ session('message') }} </div>
 
@@ -11,11 +11,9 @@
 
 			<div class="card pub_image pub_image_detail">
 				<div class="card-header">
-					@if(Auth::user()->image)
 					<div class="container-avatar">
-						<img src="{{ route('user.avatar',['filename'=>Auth::user()->image ]) }}" alt="" class="avatar">
+						<img src="{{ route('user.avatar',['filename'=>$image->user->image ]) }}" alt="" class="avatar">
 					</div>
-					@endif
 
 					<div class="data-user">
 						{{ $image->user->name.' '.$image->user->surname	}}

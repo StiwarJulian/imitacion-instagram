@@ -14,16 +14,14 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'user'], function () {
-	Route::get('/configuracion', 'UserController@config')->name('user.config')->middleware('auth');
-	Route::put('/configuracion/update/{id}', 'UserController@updateConfig')->name('user.updateConfig')->middleware('auth');
+	Route::get('/configuracion', 'UserController@config')->name('user.config');
+	Route::put('/configuracion/update/{id}', 'UserController@updateConfig')->name('user.updateConfig');
 	Route::get('/image/{filename}', 'UserController@getImage')->name('user.avatar');
+	Route::get('/profile/{id}','UserController@profile')->name('user.profile');
 });
-
 
 Route::group(['prefix' => 'image'], function () {
 	Route::get('/subir-imagen', 'ImageController@create')->name('image.create');
@@ -34,4 +32,8 @@ Route::group(['prefix' => 'image'], function () {
 	Route::get('/detail/comment/{id}', 'CommentController@delete')->name('comment.delete');
 	Route::get('/detail/like/{id}', 'LikeController@like')->name('like.save');
 	Route::get('/detail/dislike/{id}', 'LikeController@dislike')->name('like.delete');
+});
+
+Route::group(['prefix' => 'likes'], function () {
+	Route::get('/', 'LikeController@index')->name('likes.index');
 });

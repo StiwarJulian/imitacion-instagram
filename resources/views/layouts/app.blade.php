@@ -70,8 +70,11 @@
 							</a>
 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="">
+								<a class="dropdown-item" href="{{ route('user.profile',['id'=>\Auth::user()->id]) }}">
 									Mi Perfil
+								</a>
+								<a class="dropdown-item" href="{{route('likes.index')}}">
+									Favoritas
 								</a>
 								<a class="dropdown-item" href="{{ Route('user.config') }}">
 									Configuracion

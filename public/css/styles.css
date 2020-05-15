@@ -57,6 +57,7 @@ form .avatar {
 
 .image-container img{
 	width: 100%;
+	max-height: 450px;
 }
 
 .pub_image .card-body{

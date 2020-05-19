@@ -58,8 +58,19 @@
 							<a href="{{ route('home') }}" class="nav-link"> Inicio</a>
 						</li>
 						<li class="nav-item ">
+							<a class="nav-link" href="{{route('user.index')}}">
+								Gente
+							</a>
+						</li>
+						<li class="nav-item ">
+							<a class="nav-link" href="{{route('likes.index')}}">
+								Favoritas
+							</a>
+						</li>
+						<li class="nav-item ">
 							<a href="{{ route('image.create') }}" class="nav-link"> Subir Imagen</a>
 						</li>
+
 						<li class="nav-item">
 							@include('includes.avatar')
 						</li>
@@ -73,9 +84,7 @@
 								<a class="dropdown-item" href="{{ route('user.profile',['id'=>\Auth::user()->id]) }}">
 									Mi Perfil
 								</a>
-								<a class="dropdown-item" href="{{route('likes.index')}}">
-									Favoritas
-								</a>
+
 								<a class="dropdown-item" href="{{ Route('user.config') }}">
 									Configuracion
 								</a>

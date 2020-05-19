@@ -1,5 +1,5 @@
 window.addEventListener("load", function(){
-	const url = 'http://insta_lab.ml/';
+	const url = 'http://insta_lab.ml';
 
 	// boton like
 	$('.btn-like').css('cursor', 'pointer');
@@ -51,6 +51,15 @@ window.addEventListener("load", function(){
 		});
 	}
 	dislike();
+
+
+	//BUSCADOR
+
+	$('#buscador').submit(function(){
+
+		$(this).attr('action', url+'/user/gente/'+$('#buscador #search').val());
+	});
+
 });
 
 

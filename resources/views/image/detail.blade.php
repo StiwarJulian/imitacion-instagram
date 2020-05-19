@@ -53,6 +53,34 @@
 							{{ count($image->like) }}
 						</span>
 					</div>
+					@if(Auth::user() && Auth::user()->id == $image->user->id)
+						<div class="actions">
+							<a href="{{ route('image.edit', ['id'=>$image->id]) }}" class="btn btn-sm btn-primary" > Actualizar</a>
+							<a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">Borrar</a>
+
+						<!-- Trigger the modal with a button {{ route('image.delete', ['id'=>$image->id]) }}-->
+							<!-- Modal -->
+							<div id="myModal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Estas seguro </h4>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+										<div class="modal-body">
+											<p>Una vez eliminada, no se podra recuperar la imagen, estas seguro de borrarla?.</p>
+										</div>
+										<div class="modal-footer">
+											<a href="{{ route('image.delete', ['id'=>$image->id]) }}" class="btn btn-danger" >Borrar Definitavemente</a>
+											<button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					@endif
 					<div class="clearfix"></div>
 					<div class="comments">
 						<h2> Comentarios {{count($image->comment)}}</h2>
